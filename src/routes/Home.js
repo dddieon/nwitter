@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { dbservice } from "fbase"
+import { dbService } from "fbase"
 import Nweet from "components/Nweet"
 
 const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("")
     const [nweets, setNweets] = useState([])
     useEffect(() => {
-        dbservice.collection("nweets").onSnapshot((snapshot) => {
-            console.log(snapshot.docs)
+        dbService.collection("nweets").onSnapshot((snapshot) => {
             const nweetArray = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
             setNweets(nweetArray)
         })
     }, [])
     const onSubmit = async (event) => {
         event.preventDefault()
-        await dbservice.collection("nweets").add({
+        await dbService.collection("nweets").add({
             text: nweet,
             createdAt: Date.now(),
             creatorId: userObj.uid,
