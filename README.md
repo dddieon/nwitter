@@ -10,7 +10,7 @@ yarn start
 
 ## url 링크
 
-https://dddieon.github.io/nwitter/#/
+`https://dddieon.github.io/nwitter/#/`
 
 ## 기능
 
