@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import AppRouter from "components/Router"
 import { authService } from "fbase"
-import { auth } from "firebase"
 
 function App() {
     const [init, setInit] = useState(false)
@@ -14,8 +13,10 @@ function App() {
                     uid: user.uid,
                     updateProfile: (args) => user.updateProfile(args),
                 })
+                // userObj설정
             } else {
                 setUserObj(null)
+                // 로그아웃
             }
             setInit(true)
         })
@@ -43,7 +44,6 @@ function App() {
             ) : (
                 "initializing..."
             )}
-            <footer>&copy; Nwitter {new Date().getFullYear()}</footer>
         </>
     )
 }
